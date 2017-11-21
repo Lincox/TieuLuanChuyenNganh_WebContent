@@ -1,0 +1,204 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="WebChiaSeNoiDungModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="BaiViet">
+    <Key>
+      <PropertyRef Name="_idBaiViet" />
+    </Key>
+    <Property Name="_idBaiViet" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="_idTheLoai" Type="varchar" MaxLength="50" />
+    <Property Name="_idUserDang" Type="varchar" MaxLength="50" />
+    <Property Name="TieuDe" Type="nvarchar(max)" />
+    <Property Name="TomTatNoiDung" Type="nvarchar(max)" />
+    <Property Name="AnhBia" Type="varbinary(max)" />
+    <Property Name="NgayDang" Type="datetime" />
+    <Property Name="NgayChinhSua" Type="datetime" />
+    <Property Name="NoiDung" Type="nvarchar(max)" />
+    <Property Name="SoLanXem" Type="int" />
+    <Property Name="TrangThaiBaiViet" Type="bit" />
+  </EntityType>
+  <EntityType Name="BinhLuan">
+    <Key>
+      <PropertyRef Name="_idBinhLuan" />
+    </Key>
+    <Property Name="_idBinhLuan" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="_idUserDoc" Type="varchar" MaxLength="50" />
+    <Property Name="ThoiDiemBinhLuan" Type="datetime" />
+    <Property Name="_idBaiViet" Type="varchar" MaxLength="50" />
+    <Property Name="NoiDung" Type="nvarchar(max)" />
+    <Property Name="_idBinhLuanGoc" Type="varchar" MaxLength="50" />
+    <Property Name="CapBac" Type="int" />
+  </EntityType>
+  <EntityType Name="LichSuNapTien">
+    <Key>
+      <PropertyRef Name="_idLichSuNapTien" />
+    </Key>
+    <Property Name="_idLichSuNapTien" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="_idUserDang" Type="varchar" MaxLength="50" />
+    <Property Name="_idUserDoc" Type="varchar" MaxLength="50" />
+    <Property Name="NgayNop" Type="datetime" />
+    <Property Name="MenhGia" Type="float" />
+    <Property Name="ThoiHan" Type="int" />
+    <Property Name="Seri" Type="varchar" MaxLength="50" />
+    <Property Name="MaSMS" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="TheLoai">
+    <Key>
+      <PropertyRef Name="_idTheLoai" />
+    </Key>
+    <Property Name="_idTheLoai" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="TheLoai" Type="nvarchar(max)" />
+    <Property Name="_idTheLoaiCha" Type="varchar" MaxLength="50" />
+    <Property Name="TheLoaiCha" Type="nvarchar(max)" />
+    <Property Name="_idUser" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="_idUser" />
+    </Key>
+    <Property Name="_idUser" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="HoTen" Type="nvarchar(max)" />
+    <Property Name="NgaySinh" Type="date" />
+    <Property Name="GioiTinh" Type="bit" />
+    <Property Name="SDT" Type="varchar" MaxLength="11" />
+    <Property Name="Email" Type="varchar" MaxLength="50" />
+    <Property Name="NgayDangKy" Type="date" />
+    <Property Name="Usename" Type="varchar" MaxLength="50" />
+    <Property Name="Password" Type="varchar" MaxLength="50" />
+    <Property Name="Quyen" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <Association Name="FK_BaiViet_TheLoai">
+    <End Role="TheLoai" Type="Self.TheLoai" Multiplicity="0..1" />
+    <End Role="BaiViet" Type="Self.BaiViet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TheLoai">
+        <PropertyRef Name="_idTheLoai" />
+      </Principal>
+      <Dependent Role="BaiViet">
+        <PropertyRef Name="_idTheLoai" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_BaiViet_User">
+    <End Role="User" Type="Self.User" Multiplicity="0..1" />
+    <End Role="BaiViet" Type="Self.BaiViet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="_idUser" />
+      </Principal>
+      <Dependent Role="BaiViet">
+        <PropertyRef Name="_idUserDang" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_BinhLuan_BaiViet">
+    <End Role="BaiViet" Type="Self.BaiViet" Multiplicity="0..1" />
+    <End Role="BinhLuan" Type="Self.BinhLuan" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BaiViet">
+        <PropertyRef Name="_idBaiViet" />
+      </Principal>
+      <Dependent Role="BinhLuan">
+        <PropertyRef Name="_idBaiViet" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_BinhLuan_BinhLuan">
+    <End Role="BinhLuan" Type="Self.BinhLuan" Multiplicity="0..1" />
+    <End Role="BinhLuan1" Type="Self.BinhLuan" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BinhLuan">
+        <PropertyRef Name="_idBinhLuan" />
+      </Principal>
+      <Dependent Role="BinhLuan1">
+        <PropertyRef Name="_idBinhLuanGoc" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_BinhLuan_User">
+    <End Role="User" Type="Self.User" Multiplicity="0..1" />
+    <End Role="BinhLuan" Type="Self.BinhLuan" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="_idUser" />
+      </Principal>
+      <Dependent Role="BinhLuan">
+        <PropertyRef Name="_idUserDoc" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LichSuNapTien_User">
+    <End Role="User" Type="Self.User" Multiplicity="0..1" />
+    <End Role="LichSuNapTien" Type="Self.LichSuNapTien" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="_idUser" />
+      </Principal>
+      <Dependent Role="LichSuNapTien">
+        <PropertyRef Name="_idUserDoc" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TheLoai_TheLoai">
+    <End Role="TheLoai" Type="Self.TheLoai" Multiplicity="0..1" />
+    <End Role="TheLoai1" Type="Self.TheLoai" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TheLoai">
+        <PropertyRef Name="_idTheLoai" />
+      </Principal>
+      <Dependent Role="TheLoai1">
+        <PropertyRef Name="_idTheLoaiCha" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TheLoai_User">
+    <End Role="User" Type="Self.User" Multiplicity="0..1" />
+    <End Role="TheLoai" Type="Self.TheLoai" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="_idUser" />
+      </Principal>
+      <Dependent Role="TheLoai">
+        <PropertyRef Name="_idUser" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="WebChiaSeNoiDungModelStoreContainer">
+    <EntitySet Name="BaiViet" EntityType="Self.BaiViet" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="BinhLuan" EntityType="Self.BinhLuan" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LichSuNapTien" EntityType="Self.LichSuNapTien" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TheLoai" EntityType="Self.TheLoai" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_BaiViet_TheLoai" Association="Self.FK_BaiViet_TheLoai">
+      <End Role="TheLoai" EntitySet="TheLoai" />
+      <End Role="BaiViet" EntitySet="BaiViet" />
+    </AssociationSet>
+    <AssociationSet Name="FK_BaiViet_User" Association="Self.FK_BaiViet_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="BaiViet" EntitySet="BaiViet" />
+    </AssociationSet>
+    <AssociationSet Name="FK_BinhLuan_BaiViet" Association="Self.FK_BinhLuan_BaiViet">
+      <End Role="BaiViet" EntitySet="BaiViet" />
+      <End Role="BinhLuan" EntitySet="BinhLuan" />
+    </AssociationSet>
+    <AssociationSet Name="FK_BinhLuan_BinhLuan" Association="Self.FK_BinhLuan_BinhLuan">
+      <End Role="BinhLuan" EntitySet="BinhLuan" />
+      <End Role="BinhLuan1" EntitySet="BinhLuan" />
+    </AssociationSet>
+    <AssociationSet Name="FK_BinhLuan_User" Association="Self.FK_BinhLuan_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="BinhLuan" EntitySet="BinhLuan" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LichSuNapTien_User" Association="Self.FK_LichSuNapTien_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="LichSuNapTien" EntitySet="LichSuNapTien" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TheLoai_TheLoai" Association="Self.FK_TheLoai_TheLoai">
+      <End Role="TheLoai" EntitySet="TheLoai" />
+      <End Role="TheLoai1" EntitySet="TheLoai" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TheLoai_User" Association="Self.FK_TheLoai_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="TheLoai" EntitySet="TheLoai" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
