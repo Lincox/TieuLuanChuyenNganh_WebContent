@@ -15,7 +15,7 @@
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
-            @Html.LabelFor(model => model.C_idBaiViet, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.Label("ID Bài Viết", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.C_idBaiViet, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.C_idBaiViet, "", new { @class = "text-danger" })
@@ -23,7 +23,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.C_idTheLoai, "C_idTheLoai", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.Label("Thể loại", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownList("C_idTheLoai", null, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.C_idTheLoai, "", new { @class = "text-danger" })
@@ -31,7 +31,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.C_idUserDang, "C_idUserDang", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.Label("Người đăng", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownList("C_idUserDang", null, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.C_idUserDang, "", new { @class = "text-danger" })
@@ -39,76 +39,37 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.TieuDe, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.Label("Tiêu đề", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.TieuDe, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.TieuDe, "", new { @class = "text-danger" })
             </div>
         </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.TomTatNoiDung, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="form-group" row ="5">
+            @Html.Label("Tóm tắt nội dung", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.TomTatNoiDung, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.TextAreaFor(model => model.TomTatNoiDung, 10, 40, new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.TomTatNoiDung, "", new { @class = "text-danger" })
-            </div>
-        </div>
+
+            </div >
+        </div >
 
         <div class="form-group">
-            @Html.LabelFor(model => model.AnhBia, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.Label("Ảnh bìa", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-2">
-                <input type="file" id="aAnhBia" name="aAnhBia" />
+                <input type = "file" id="aAnhBia" name="aAnhBia" />
             </div>
 
-
-
-            @*<div class="col-md-10">
-                    @Html.EditorFor(model => model.AnhBia, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.AnhBia, "", new { @class = "text-danger" })
-                </div>*@
-
-            @*<script>
-                    $("#Browse").click(function () {
-                        var finder = new CKFinder();
-                        finder.selecActionFunction = function (fileUrl) {
-                            //Lấy file ảnh cuối cùng
-                            //fileUrl = fileUrl.substring(fileUrl.lastIndexOf("/") + 1);
-                            $("#Picture").val(fileUrl);
-                        };
-                        finder.popup();
-                    });
-                </script>*@
         </div>
 
-        @*@{
-
-                var datee = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
-            }
-            <div class="form-group">
-                @Html.LabelFor(model => model.NgayDang, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    <div class="col-md-2">
-                        @Html.TextAreaFor(model => model.NgayDang, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.NgayDang, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-            </div>*@
-
-        @*<div class="form-group">
-                @Html.LabelFor(model => model.NgayChinhSua, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.NgayChinhSua, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.NgayChinhSua, "", new { @class = "text-danger" })
-                </div>
-            </div>*@
-
         <div class="form-group">
-            @Html.LabelFor(model => model.NoiDung, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.Label("Nội dung", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.TextAreaFor(model => model.NoiDung, new { htmlAttributes = new { @class = "form-control" }, id = "NoiDung" })
                 @Html.ValidationMessageFor(model => model.NoiDung, "", new { @class = "text-danger" })
             </div>
-            <script type="text/javascript">
+            <script type = "text/javascript" >
                 CKEDITOR.replace("NoiDung", {
                     customConfig: "/Content/ckeditor/config.js"});
             </script>

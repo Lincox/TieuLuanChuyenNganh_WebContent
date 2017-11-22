@@ -116,10 +116,16 @@ namespace SaveContent.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [ValidateInput(false)]
-        public ActionResult Edit([Bind(Include = "C_idBaiViet,C_idTheLoai,C_idUserDang,TieuDe,TomTatNoiDung,AnhBia,NgayDang,NgayChinhSua,NoiDung,SoLanXem,TrangThaiBaiViet")] BaiViet baiViet)
+        public ActionResult Edit([Bind(Include = "C_idBaiViet,C_idTheLoai,C_idUserDang,TieuDe,TomTatNoiDung,AnhBia,NgayDang,NgayChinhSua,NoiDung,SoLanXem,TrangThaiBaiViet")]
+        BaiViet baiViet, HttpPostedFileBase NoiDung, HttpPostedFileBase aAnhBia)
         {
             if (ModelState.IsValid)
             {
+                if (aAnhBia != null)
+                {
+                    baiViet.AnhBia = new byte[aAnhBia.ContentLength];
+                    aAnhBia.InputStream.Read(baiViet.AnhBia, 0, aAnhBia.ContentLength);
+                }
                 baiViet.NgayChinhSua = DateTime.Now;
                 db.Entry(baiViet).State = EntityState.Modified;
                 db.SaveChanges();
