@@ -1,0 +1,177 @@
+﻿@*@model IEnumerable<LoginTest.Models.BaiViet>
+
+    @{
+        ViewBag.Title = "Index";
+    }
+
+    <h2>Index</h2>
+
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.TheLoai.TheLoai1)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.User.HoTen)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TieuDe)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TomTatNoiDung)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AnhBia)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NgayDang)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NgayChinhSua)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NoiDung)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SoLanXem)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TrangThaiBaiViet)
+            </th>
+            <th></th>
+        </tr>
+
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TheLoai.TheLoai1)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.User.HoTen)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TieuDe)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TomTatNoiDung)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AnhBia)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NgayDang)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NgayChinhSua)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NoiDung)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SoLanXem)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TrangThaiBaiViet)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.C_idBaiViet }) |
+                @Html.ActionLink("Details", "Details", new { id=item.C_idBaiViet }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.C_idBaiViet })
+            </td>
+        </tr>
+    }
+
+    </table>*@
+@using LoginTest.Models;
+@model IEnumerable<BaiViet>
+@{
+    ViewBag.Title = "Index";
+    Layout = null;
+}
+@{
+    IEnumerable<BaiViet> lstCN = (IEnumerable<BaiViet>)ViewBag.ListCN;
+    IEnumerable<BaiViet> lstHT = ViewBag.ListHT as IEnumerable<BaiViet>;
+    IEnumerable<BaiViet> lstTT = ViewBag.ListTT as IEnumerable<BaiViet>;
+}
+
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>ShareYour</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="My Play Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template,
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
+    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+    @*bootstrap*@
+    <link href="/Content/css/bootstrap.min.css" rel='stylesheet' type='text/css' media="all" />
+    <!-- <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"> -->
+    <!-- <link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css"> -->
+    <link rel="stylesheet" type="text/css" href="/Content/css/bootstrap.css">
+
+    <!--link tạo nút đăng nhập facebook-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+    <!-- //bootstrap -->
+    <link href="/Content/css/dashboard.css" rel="stylesheet">
+    <!-- Custom Theme files -->
+    <link href="/Content/css/style1.css" rel='stylesheet' type='text/css' media="all" />
+    <script src="/Content/js/jquery-1.11.1.min.js"></script>
+    <!--start-smoth-scrolling-->
+    <!-- fonts -->
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Poiret+One' rel='stylesheet' type='text/css'>
+    <!-- //fonts -->
+    <style type="text/css">
+        #element3 {
+            display: inline-block;
+            margin-top: 9px;
+            position: relative;
+            width: 50%;
+            height: 50%;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="recommended">
+        <div class="recommended-grids">
+            <div class="recommended-info">
+                <h3>Giải Trí Thú Vị</h3>
+            </div>
+            <script src="~/Content/js/responsiveslides.min.js"></script>
+            <script>
+                // You can also use "$(window).load(function() {"
+                $(function () {
+                    // Slideshow 3
+                    $("#slider3").responsiveSlides({
+                        auto: true,
+                        pager: false,
+                        nav: true,
+                        speed: 500,
+                        namespace: "callbacks",
+                        before: function () {
+                            $('.events').append("<li>before event fired.</li>");
+                        },
+                        after: function () {
+                            $('.events').append("<li>after event fired.</li>");
+                        }
+                    });
+
+                });
+            </script>
+            <div id="top" class="callbacks_container">
+                <ul class="rslides" id="slider3">
+                    <li>
+                        <div class="animated-grids">
+                            @Html.Partial("~/Views/BaiViet/BaiVietStyle3Partial.cshtml")
+                        </div>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
