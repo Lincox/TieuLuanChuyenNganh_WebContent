@@ -97,7 +97,10 @@ namespace LoginTest.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "C_idBaiViet,C_idTheLoai,C_idUserDang,TieuDe,TomTatNoiDung,AnhBia,NgayDang,NgayChinhSua,NoiDung,SoLanXem,TrangThaiBaiViet")] BaiViet baiViet)
+        [ValidateInput(false)]
+
+        public ActionResult Edit([Bind(Include = "C_idBaiViet,C_idTheLoai,C_idUserDang,TieuDe,TomTatNoiDung,AnhBia,NgayDang,NgayChinhSua,NoiDung,SoLanXem,TrangThaiBaiViet")]
+        BaiViet baiViet, HttpPostedFileBase NoiDung, HttpPostedFileBase aAnhBia)
         {
             if (ModelState.IsValid)
             {
