@@ -1,0 +1,196 @@
+﻿@{
+//Layout = null;
+}
+
+@using LoginTest.Models;
+@model List<BaiViet>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>ShareYour</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="My Play Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template,
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
+    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <!--bootstrap-->
+    <link href="/Content/css/bootstrap.min.css" rel='stylesheet' type='text/css' media="all" />
+
+    <link rel="stylesheet" type="text/css" href="/Content/css/bootstrap.css">
+
+    <!--link tạo nút đăng nhập facebook-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+
+    <!-- //bootstrap -->
+    <link href="/Content/css/dashboard.css" rel="stylesheet">
+    <!-- Custom Theme files -->
+    <link href="/Content/css/style1.css" rel='stylesheet' type='text/css' media="all" />
+    <script src="/Content/js/jquery-1.11.1.min.js"></script>
+    <!--start-smoth-scrolling-->
+    <!-- fonts -->
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Poiret+One' rel='stylesheet' type='text/css'>
+    <!-- //fonts -->
+    <style>
+        .navbar-toggle .icon-bar {
+            display: block;
+            width: 22px;
+            height: 2px;
+            background-color: #000;
+            border-radius: 1px;
+        }
+    </style>
+
+    <style type="text/css">
+        #element1 {
+            display: inline-block;
+        }
+
+        #element2 {
+            display: inline-block;
+            margin-right: 10px;
+        }
+
+        #element3 {
+            display: inline-block;
+            margin-right: 10px;
+            position: relative;
+        }
+    </style>
+
+    <style>
+        .container-right {
+            padding-right: 15px;
+            padding-left: 15px;
+            margin-top: 15px;
+            margin-right: auto;
+            margin-left: auto;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div>
+        <fieldset class="fieldset-custom">
+            <!--Avatar-->
+            <div class="col-sm-3 text-center" style="background-color:#f9f9f9">
+                <div>
+                    <a href="" style="color:#475b6f">
+                        <img class="text-center" src="/Content/images/2.jpg" width="200" height="200" style="border-radius:50%; margin-bottom: 10px; margin-top: 10px;" />
+                    </a>
+                </div>
+                <!--Thông tin cá nhân-->
+                <!--col-md-1 is of width 8.33333333%-->
+
+
+                <div class="text-left">
+                    <ul class="list-group-custom" class="text-left">
+                        <li class="list-group-item-custom">Ngày sinh: 18/11/1996</li>
+                        <li class="list-group-item-custom">Giới tính: Nam</li>
+                        <li class="list-group-item-custom">Số điện thoại: 01262567539</li>
+                        <li class="list-group-item-custom">Ngày đăng ký: 18/12/2016</li>
+                        <li class="list-group-item-custom" style="background-color:#FFFF00">Doanh thu: 800,000 VNĐ</li>
+                    </ul>
+
+                </div>
+
+                <div>
+                    <button class="btn btn-default" type="button">
+                        Quản lý
+                    </button>
+                    <a href="FormDangBai.html">
+                        <button type="button" class="btn btn-info">
+                            @Html.ActionLink("Đăng Bài", "Create", "QuanLyBaiViet")
+                        </button>
+                    </a>
+                </div>
+            </div>
+
+            <!--Nội dung chính, bài đăng, đăng bài-->
+            <div class="col-sm-9" style="background-color:#efefef;">
+                <div class="row">
+                    <!--Avatar, thời gian và chủ đề-->
+                    <div class="col-lg-12 col-centered cf">
+
+                        @foreach (var item in Model)
+                        {
+                            <a href="" style="color:#475b6f">
+                                <img src="/Content/images/2.jpg" width="50" height="50" style="border-radius:50%; margin-bottom: 10px; margin-top: 10px;" />
+                            </a>
+
+                                <a href="" style="color:#475b6f">
+                                    <div class="text">
+                                        <h5><b></b></h5>
+                                    </div>
+                                </a>
+
+                                <a href="" style="color:#475b6f; margin-left:2%">
+                                    <div class="text">
+                                        <h5>@item.User.HoTen</h5>
+                                    </div>
+                                </a>
+
+                                <a href="" style="color:#475b6f; margin-left:2%">
+                                    <div class="text">
+                                        <h5>@item.NgayDang</h5>
+                                    </div>
+                                </a>
+
+                                <div class="text" style="color:#475b6f; margin-left:2%">
+                                    <h5>Chủ đề</h5>
+                                </div>
+
+                                    <a href="" style="color:#475b6f">
+                                        <div class="text">
+                                            <h5><b>@item.TheLoai.TheLoai1</b></h5>
+                                        </div>
+                                    </a>
+
+                                    <a href="" style="color:#475b6f">
+                                        <span class="glyphicon glyphicon-eye-open" style="margin-left:2%">@item.SoLanXem</span>
+                                    </a>
+
+                                    @Html.ActionLink("Chỉnh sửa", "Edit", "QuanLyBaiViet", new { id = item.C_idBaiViet }, null)
+                                    @*<button class="btn" style="background-color: transparent; float:right; margin-top:20px" data-toggle="dropdown">
+                                            <span class="glyphicon glyphicon-pencil"></span>
+
+                                        </button>*@
+                                    @*<ul class="dropdown-menu dropdown-menu-right">*@
+
+                                    @*<li><a href="#">Xóa</a></li>*@
+                                    @*</ul>*@
+
+
+                            //</div>
+
+                        <!--Hình ảnh-->
+                            <div class="col-lg-12 col-centered">
+                                <div class="content">
+                                    <a href=""><img class="img-crop" src="/Content/images/4.jpg"></a>
+                                </div>
+                            </div>
+                        <!--Tiêu đề + Nội dung tóm tắt-->
+                                <div class="col-lg-10 col-centered" style="margin-top:2%">
+                                    <h3><a href="@Url.Action("DetailBaiViet","NguoiViet",new { @idBaiViet = @item.C_idBaiViet })" style="color:#475b6f"><b>@item.TieuDe</b></a></h3>
+                                </div>
+
+                                <div class="col-lg-10 col-centered" style="margin-top:2%">
+                                    <h4>
+                                        <p style="line-height:180%">
+                                            <a href="" style="color:#777">
+                                                @item.TomTatNoiDung
+                                            </a>
+                                        </p>
+                                    </h4>
+                                </div>
+                        }
+                    </div>
+                </div>
+        </fieldset>
+    </div>
+</body>
+</html>
+
