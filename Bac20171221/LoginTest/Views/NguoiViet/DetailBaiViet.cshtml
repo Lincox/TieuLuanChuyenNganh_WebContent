@@ -53,8 +53,28 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <div class="song">
 
                         <div class="song-info">
-                            <h3>@item.TieuDe</h3>
-                            <h6>Đăng vào @item.NgayDang</h6>
+                            <h3><b>@item.TieuDe</b></h3>
+
+                            @if (item.TrangThaiBaiViet == true)
+                            {
+                                <h6>Đã chỉnh sửa vào @item.NgayChinhSua bởi @item.User.HoTen</h6>
+                            }
+                            @if (item.TrangThaiBaiViet == null || item.TrangThaiBaiViet == false)
+                            {
+                                <h6>Đăng vào @item.NgayDang bởi @item.User.HoTen</h6>
+
+                            }
+
+                            @if (@Session["QuyenID"].ToString() == item.User.C_idUser.ToString())
+                            {
+                                <a style="display:inline-block;padding-right:10px">
+                                    @Html.ActionLink("Chỉnh sửa", "Edit", "QuanLyBaiViet", new { id = item.C_idBaiViet }, new { @class = "btn btn-primary", @style = "font-size:100%" })
+                                </a>
+                                @Html.ActionLink("Xóa", "Delete", "QuanLyBaiViet", new { id = item.C_idBaiViet }, new { @class = "btn btn-danger", @style = "font-size:100%" })
+                            }
+
+
+
                         </div>
                     </div>
 
@@ -81,19 +101,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                 <li>
                                     <p>@Html.Raw(@item.NoiDung)</p>
                                 </li>
-                                <li>
-                                    <p>Nullam fringilla sagittis tortor ut rhoncus. Nam vel ultricies erat, vel sodales leo. Maecenas pellentesque, est suscipit laoreet tincidunt, ipsum tortor vestibulum leo, ac dignissim diam velit id tellus. Morbi luctus velit quis semper egestas. Nam condimentum sem eget ex iaculis bibendum. Nam tortor felis, commodo faucibus sollicitudin ac, luctus a turpis. Donec congue pretium nisl, sed fringilla tellus tempus in.</p>
-                                    <p>Nullam fringilla sagittis tortor ut rhoncus. Nam vel ultricies erat, vel sodales leo. Maecenas pellentesque, est suscipit laoreet tincidunt, ipsum tortor vestibulum leo, ac dignissim diam velit id tellus. Morbi luctus velit quis semper egestas. Nam condimentum sem eget ex iaculis bibendum. Nam tortor felis, commodo faucibus sollicitudin ac, luctus a turpis. Donec congue pretium nisl, sed fringilla tellus tempus in.</p>
-                                    <div class="load-grids">
-                                        <div class="load-grid">
-                                            <p>Category</p>
-                                        </div>
-                                        <div class="load-grid">
-                                            <a href="movies.html">Entertainment</a>
-                                        </div>
-                                        <div class="clearfix"> </div>
-                                    </div>
-                                </li>
                             </ul>
                         </div>
                     </div>
@@ -118,10 +125,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     @*Comment bậc 1*@
 
                     @Html.Partial("~/Views/BaiViet/CommentStyle1Partial.cshtml", lstComment)
-
-
-
-                    @*@Html.Partial("~/Views/BaiViet/CommentStyle2Partial.cshtml", lstComment2)*@
 
 
                 </div>

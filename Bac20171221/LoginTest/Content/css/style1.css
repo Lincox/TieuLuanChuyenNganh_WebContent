@@ -1259,7 +1259,7 @@ select.form-control.bfh-countries:hover {
 .published {
     margin: 1em 0 0 0;
     padding-left: 0;
-    background: #f7f7f7;
+    background: #fcfcfc;
     padding: 1em;
 }
 
@@ -1273,7 +1273,7 @@ select.form-control.bfh-countries:hover {
 
     .published p {
         font-size: 13px;
-        color: #9E9E9E;
+        color: #000000;
         margin: 1em 0;
         line-height: 1.8em;
     }

@@ -143,8 +143,14 @@ namespace LoginTest.Controllers
 
             }
             return Redirect("/");
+        }
 
-
+        public ActionResult Logout ()
+        {
+            Session["UserName"] = null;
+            Session["HoTen"] = null;
+            Session["QuyenID"] = null;
+            return RedirectToAction("Index", "Home");
         }
     }
 }

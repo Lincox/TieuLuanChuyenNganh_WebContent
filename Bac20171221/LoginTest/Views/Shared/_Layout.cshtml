@@ -94,8 +94,10 @@
                     @if (@Session["HoTen"] != null && @Session["QuyenID"] != null)
                     {
                         <div class="file" style="margin-top:-10px">
-                            <a class="file" href="@Url.Action("HomeNguoiViet","NguoiViet",new {@idUser =Session["QuyenID"]})">Xin Chào, @Session["HoTen"].ToString()</a>
+                            <a class="file" href="@Url.Action("HomeNguoiViet","NguoiViet",new {@idUser = Session["QuyenID"]})">Xin Chào, @Session["HoTen"].ToString()</a>
+                            <a class="file" href="/Home/Logout"><span class="glyphicon glyphicon-chevron-down file" style="font-size:0.67em;"></span></a>
                         </div>
+
 
                         <div class="clearfix"> </div>
                     }

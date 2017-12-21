@@ -39,7 +39,7 @@ namespace LoginTest.Controllers
                 return Redirect("/");
             }
 
-            if (guser.Quyen == 4)
+            if (guser.Quyen == 4 || guser.Quyen == 5)
             {
                 var BaiViet = db.BaiViets.Where(x => x.C_idUserDang == idUser).ToList();
                 ViewBag.contentbelong = BaiViet;

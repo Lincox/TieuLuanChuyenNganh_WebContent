@@ -69,7 +69,7 @@ namespace LoginTest.Controllers
 
                 db.BaiViets.Add(baiViet);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("HomeNguoiViet", "NguoiViet", new { @C_idUser = Session["QuyenID"] });
             }
 
             ViewBag.C_idTheLoai = new SelectList(db.TheLoais, "C_idTheLoai", "TheLoai1", baiViet.C_idTheLoai);
@@ -116,7 +116,7 @@ namespace LoginTest.Controllers
 
                 db.Entry(baiViet).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("HomeNguoiViet", "NguoiViet", new { @C_idUser = Session["QuyenID"] });
             }
 
             ViewBag.C_idTheLoai = new SelectList(db.TheLoais, "C_idTheLoai", "TheLoai1", baiViet.C_idTheLoai);
@@ -136,7 +136,10 @@ namespace LoginTest.Controllers
             {
                 return HttpNotFound();
             }
-            return View(baiViet);
+            //return View(baiViet);
+            db.BaiViets.Remove(baiViet);
+            db.SaveChanges();
+            return RedirectToAction("HomeNguoiViet", "NguoiViet", new { @C_idUser = Session["QuyenID"] });
         }
 
         // POST: QuanLyBaiViet/Delete/5
@@ -147,7 +150,7 @@ namespace LoginTest.Controllers
             BaiViet baiViet = db.BaiViets.Find(id);
             db.BaiViets.Remove(baiViet);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("HomeNguoiViet", "NguoiViet", new { @C_idUser = Session["QuyenID"] });
         }
 
         protected override void Dispose(bool disposing)

@@ -78,152 +78,43 @@
 <body>
     @foreach (var item in Model.Take(1))
     {
-        <div class="row">
-            <div style="padding-left:15%;padding-top:30px;padding-bottom:10px">
+        if (@Session["QuyenID"].ToString() == item.User.C_idUser.ToString())
+        {
+            <div class="row">
+                <div style="padding-left:15%;padding-top:30px;padding-bottom:10px">
 
-                <img class="text-center" src="/Content/images/2.jpg" width="100" height="100" style="border-radius:50%; margin-bottom: 10px; margin-top: 10px;"/>
-                <h3 style="color:black; display: inline-block; padding-left:2%">@item.User.HoTen</h3>
+                    <img class="text-center" src="/Content/images/2.jpg" width="100" height="100" style="border-radius:50%; margin-bottom: 10px; margin-top: 10px;" />
+                    <h3 style="color:black; display: inline-block; padding-left:2%">@item.User.HoTen</h3>
 
+                    <a style="padding-left:20%; padding-right:30px">
+                        @Html.ActionLink("Đăng Bài", "Create", "QuanLyBaiViet", null, new { @class = "btn btn-success", @style = "font-size:170%" })
+                    </a>
+                    <a>
+                        @Html.ActionLink("Quản lý doanh thu", null, null, null, new { @class = "btn btn-warning", @style = "font-size:170%" })
+                    </a>
+                </div>
+            </div>
+        }
 
-                <a style="padding-left:20%; padding-right:30px">
-                    @Html.ActionLink("Đăng Bài", "Create", "QuanLyBaiViet", null, new { @class = "btn btn-success", @style="font-size:170%" })
-                </a>
+        if (@Session["QuyenID"].ToString() != item.User.C_idUser.ToString())
+        {
+            <div class="row">
+                <div align="center" style="padding-top:30px;padding-bottom:10px">
 
-                @Html.ActionLink("Quản lý doanh thu", null, null, null, new { @class = "btn btn-warning", @style = "font-size:170%" })
-
-</div>
-        </div>
+                    <img class="text-center" src="/Content/images/2.jpg" width="100" height="100" style="border-radius:50%; margin-bottom: 10px; margin-top: 10px;" />
+                    <h3 style="color:black; display: inline-block; padding-left:2%">@item.User.HoTen</h3>
+                </div>
+            </div>
+        }
     }
 
-    <div>
-        <div class="main-grids">
-            <!--Gán dữ liệu từ controller thông qua Viewbag vào Partialview-->
-            <div class="top-grids">
-                @Html.Partial("~/Views/BaiViet/PartialForHomeWriter.cshtml", lstCB)
+        <div>
+            <div class="main-grids">
+                <!--Gán dữ liệu từ controller thông qua Viewbag vào Partialview-->
+                <div class="top-grids">
+                    @Html.Partial("~/Views/BaiViet/PartialForHomeWriter.cshtml", lstCB)
+                </div>
             </div>
         </div>
-    </div>
-
-
-    @*<div>
-            <fieldset class="fieldset-custom">
-                <!--Avatar-->
-                <div class="col-sm-3 text-center" style="background-color:#f9f9f9">
-                    <div>
-                        <a href="" style="color:#475b6f">
-                            <img class="text-center" src="/Content/images/2.jpg" width="200" height="200" style="border-radius:50%; margin-bottom: 10px; margin-top: 10px;" />
-                        </a>
-                    </div>
-                    <!--Thông tin cá nhân-->
-                    <!--col-md-1 is of width 8.33333333%-->
-
-
-                    <div class="text-left">
-                        <ul class="list-group-custom" class="text-left">
-                            <li class="list-group-item-custom">Ngày sinh: 18/11/1996</li>
-                            <li class="list-group-item-custom">Giới tính: Nam</li>
-                            <li class="list-group-item-custom">Số điện thoại: 01262567539</li>
-                            <li class="list-group-item-custom">Ngày đăng ký: 18/12/2016</li>
-                            <li class="list-group-item-custom" style="background-color:#FFFF00">Doanh thu: 800,000 VNĐ</li>
-                        </ul>
-
-                    </div>
-
-                    <div>
-                        <button class="btn btn-default" type="button">
-                            Quản lý
-                        </button>
-                        <a href="FormDangBai.html">
-                            <button type="button" class="btn btn-info">
-                                @Html.ActionLink("Đăng Bài", "Create", "QuanLyBaiViet")
-                            </button>
-                        </a>
-                    </div>
-                </div>
-
-                <!--Nội dung chính, bài đăng, đăng bài-->
-                <div class="col-sm-9" style="background-color:#efefef;">
-                    <div class="row">
-                        <!--Avatar, thời gian và chủ đề-->
-                        <div class="col-lg-12 col-centered cf">
-
-                            @foreach (var item in Model)
-                            {
-                                <a href="" style="color:#475b6f">
-                                    <img src="/Content/images/2.jpg" width="50" height="50" style="border-radius:50%; margin-bottom: 10px; margin-top: 10px;" />
-                                </a>
-
-                                <a href="" style="color:#475b6f">
-                                    <div class="text">
-                                        <h5><b></b></h5>
-                                    </div>
-                                </a>
-
-                                <a href="" style="color:#475b6f; margin-left:2%">
-                                    <div class="text">
-                                        <h5>@item.User.HoTen</h5>
-                                    </div>
-                                </a>
-
-                                <a href="" style="color:#475b6f; margin-left:2%">
-                                    <div class="text">
-                                        <h5>@item.NgayDang</h5>
-                                    </div>
-                                </a>
-
-                                <div class="text" style="color:#475b6f; margin-left:2%">
-                                    <h5>Chủ đề</h5>
-                                </div>
-
-                                <a href="" style="color:#475b6f">
-                                    <div class="text">
-                                        <h5><b>@item.TheLoai.TheLoai1</b></h5>
-                                    </div>
-                                </a>
-
-                                    <a href="" style="color:#475b6f">
-                                        <span class="glyphicon glyphicon-eye-open" style="margin-left:2%">@item.SoLanXem</span>
-                                    </a>
-
-                                    @Html.ActionLink("Chỉnh sửa", "Edit", "QuanLyBaiViet", new { id = item.C_idBaiViet }, null)
-                                    <!--<button class="btn" style="background-color: transparent; float:right; margin-top:20px" data-toggle="dropdown">
-                                                                        <span class="glyphicon glyphicon-pencil"></span>
-
-                                                                    </button>
-                                    <ul class="dropdown-menu dropdown-menu-right">
-
-                                    <li><a href="#">Xóa</a></li>
-                                    </ul>-->
-
-
-                                //
-                    </div>
-
-        <!--Hình ảnh-->
-                                <div class="col-lg-12 col-centered">
-                                    <div class="content">
-                                        <a href=""><img class="img-crop" src="/Content/images/4.jpg"></a>
-                                    </div>
-                                </div>
-        <!--Tiêu đề + Nội dung tóm tắt-->
-                                <div class="col-lg-10 col-centered" style="margin-top:2%">
-                                    <h3><a href="@Url.Action("DetailBaiViet","NguoiViet",new { @idBaiViet = @item.C_idBaiViet })" style="color:#475b6f"><b>@item.TieuDe</b></a></h3>
-                                </div>
-
-                                <div class="col-lg-10 col-centered" style="margin-top:2%">
-                                    <h4>
-                                        <p style="line-height:180%">
-                                            <a href="" style="color:#777">
-                                                @item.TomTatNoiDung
-                                            </a>
-                                        </p>
-                                    </h4>
-                                </div>
-                            }
-                        </div>
-                    </div>
-            </div>
-            </fieldset>
-            </div>*@
-</body>
+    </body>
 </html>

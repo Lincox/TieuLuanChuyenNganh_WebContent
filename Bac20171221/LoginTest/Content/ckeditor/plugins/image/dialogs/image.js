@@ -11,7 +11,7 @@
                         d.removeClass("cke_btn_unlocked") : d.addClass("cke_btn_unlocked"); d.setAttribute("aria-checked", a.lockRatio); CKEDITOR.env.hc && d.getChild(0).setHtml(a.lockRatio ? CKEDITOR.env.ie ? "■" : "▣" : CKEDITOR.env.ie ? "□" : "▢"); return a.lockRatio
                 //g = c.$.width, c = c.$.height chỗ này là để chỉnh width với heigh default
                 //(g = 800, c = Math.floor(800 * c.$.height / c.$.width))
-            }, B = function (a, b) { var c = a.originalElement; if ("true" == c.getCustomData("isReady")) { var d = a.getContentElement("info", "txtWidth"), f = a.getContentElement("info", "txtHeight"), g; b ? c = g = 0 : (g = 620, c = Math.floor(620 * c.$.height / c.$.width)); d && d.setValue(g); f && f.setValue(c) } e(a) }, C = function (a, b) {
+            }, B = function (a, b) { var c = a.originalElement; if ("true" == c.getCustomData("isReady")) { var d = a.getContentElement("info", "txtWidth"), f = a.getContentElement("info", "txtHeight"), g; b ? c = g = 0 : (g = 830, c = Math.floor(830 * c.$.height / c.$.width)); d && d.setValue(g); f && f.setValue(c) } e(a) }, C = function (a, b) {
                 function c(a, b) {
                     var c =
                         a.match(m); return c ? ("%" == c[2] && (c[1] += "%", n(d, !1)), c[1]) : b
