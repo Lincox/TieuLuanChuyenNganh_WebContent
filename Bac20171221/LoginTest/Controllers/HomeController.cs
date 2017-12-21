@@ -135,6 +135,7 @@ namespace LoginTest.Controllers
                 Session["UserName"] = user1.Usename.ToString();
                 Session["HoTen"] = user1.HoTen.ToString();
                 Session["QuyenID"] = user1.C_idUser.ToString();
+
                 return RedirectToAction("Index", "Home");
                 //return View();
                 // return Redirect("/");

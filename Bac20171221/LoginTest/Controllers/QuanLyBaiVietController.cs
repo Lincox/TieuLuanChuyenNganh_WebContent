@@ -64,6 +64,7 @@ namespace LoginTest.Controllers
                     aAnhBia.InputStream.Read(baiViet.AnhBia, 0, aAnhBia.ContentLength);
                 }
                 baiViet.NgayDang = DateTime.Now;
+                baiViet.NgayChinhSua = DateTime.Now;
                 baiViet.TrangThaiBaiViet = false;
 
                 db.BaiViets.Add(baiViet);
@@ -99,7 +100,6 @@ namespace LoginTest.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [ValidateInput(false)]
-
         public ActionResult Edit([Bind(Include = "C_idBaiViet,C_idTheLoai,C_idUserDang,TieuDe,TomTatNoiDung,AnhBia,NgayDang,NgayChinhSua,NoiDung,SoLanXem,TrangThaiBaiViet")]
         BaiViet baiViet, HttpPostedFileBase NoiDung, HttpPostedFileBase aAnhBia)
         {
@@ -111,7 +111,6 @@ namespace LoginTest.Controllers
                     aAnhBia.InputStream.Read(baiViet.AnhBia, 0, aAnhBia.ContentLength);
                 }
                 baiViet.C_idUserDang = Session["QuyenID"].ToString();
-                baiViet.NgayDang = baiViet.NgayDang;
                 baiViet.NgayChinhSua = DateTime.Now;
                 baiViet.TrangThaiBaiViet = true;
 
@@ -123,15 +122,6 @@ namespace LoginTest.Controllers
             ViewBag.C_idTheLoai = new SelectList(db.TheLoais, "C_idTheLoai", "TheLoai1", baiViet.C_idTheLoai);
             ViewBag.C_idUserDang = new SelectList(db.Users, "C_idUser", "HoTen", baiViet.C_idUserDang);
             return View(baiViet);
-            //if (ModelState.IsValid)
-            //{
-            //    db.Entry(baiViet).State = EntityState.Modified;
-            //    db.SaveChanges();
-            //    return RedirectToAction("Index");
-            //}
-            //ViewBag.C_idTheLoai = new SelectList(db.TheLoais, "C_idTheLoai", "TheLoai1", baiViet.C_idTheLoai);
-            //ViewBag.C_idUserDang = new SelectList(db.Users, "C_idUser", "HoTen", baiViet.C_idUserDang);
-            //return View(baiViet);
         }
 
         // GET: QuanLyBaiViet/Delete/5

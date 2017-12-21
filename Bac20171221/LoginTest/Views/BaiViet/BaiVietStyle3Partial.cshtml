@@ -29,11 +29,11 @@
 
         <div class="resent-grid-info recommended-grid-info video-info-grid">
 
-            <h5><a href="@Url.Action("DetailBaiViet","NguoiViet",new { @idBaiViet = @item.C_idBaiViet })" class="title"><h4>@item.TieuDe</h4></a></h5>
+            <h3><a href="@Url.Action("DetailBaiViet","NguoiViet",new { @idBaiViet = @item.C_idBaiViet })" class="title">@item.TieuDe</a></h3>
             <h5 style="margin-top:10px"><a href="@Url.Action("DetailBaiViet","NguoiViet",new { @idBaiViet = @item.C_idBaiViet })" style="color:black">@item.TomTatNoiDung</a></h5>
             <ul>
                 <li><p class="author author-info"><a href="@Url.Action("HomeNguoiViet","NguoiViet",new {@idUser = Session["QuyenID"]})" class="author">@item.User.HoTen</a></p></li>
-                <li class="right-list"><p class="views views-info">@item.SoLanXem views</p></li>
+                <li class="right-list"><p class="views views-info">@item.SoLanXem 100 views</p></li>
             </ul>
         </div>
 

@@ -42,6 +42,7 @@ namespace LoginTest.Controllers
             if (guser.Quyen == 4)
             {
                 var BaiViet = db.BaiViets.Where(x => x.C_idUserDang == idUser).ToList();
+                ViewBag.contentbelong = BaiViet;
                 return View(BaiViet);
             }
            
