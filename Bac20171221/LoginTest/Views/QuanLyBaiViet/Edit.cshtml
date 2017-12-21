@@ -1,6 +1,6 @@
 ﻿@model LoginTest.Models.BaiViet
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("Edit", "QuanLyBaiViet", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
     

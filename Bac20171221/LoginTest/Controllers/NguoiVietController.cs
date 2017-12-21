@@ -75,6 +75,7 @@ namespace LoginTest.Controllers
             var detail1 = db.BaiViets.SingleOrDefault(x => x.C_idBaiViet == idBaiViet);
             Session["DetailBV"] = detail1.C_idBaiViet;
             var Detail = db.BaiViets.Where(x => x.C_idBaiViet == idBaiViet).ToList();
+
             
             // User guser = db.Users.SingleOrDefault(n => n.idUser == idUser);
             var lstComment1 = model.FirstOrDefault(x => x.C_idBaiViet == idBaiViet);

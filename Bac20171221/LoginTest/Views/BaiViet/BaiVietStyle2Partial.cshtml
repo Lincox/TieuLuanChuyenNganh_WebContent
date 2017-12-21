@@ -1,9 +1,13 @@
 ﻿@using LoginTest.Models;
 @model IEnumerable<BaiViet>
 
-<div class="recommended-info">
-    <h3>Học tập</h3>
-</div>
+@foreach (var item1 in Model.Take(1))
+{
+    <div class="recommended-info">
+        <a href="@Url.Action("HocTap","QuanLyTheLoai",new { @idTheLoai = 2})"><h3>@item1.TheLoai.TheLoai1</h3></a>
+    </div>
+}
+
 @foreach (var item in Model.Take(4))
 {
     <div class="col-md-3 resent-grid recommended-grid">
@@ -19,7 +23,7 @@
                 <a><img src="~/Content/images/t1.jpg" style="height:180px" alt="" /> </a>
             }
         </div>
-        <div class="resent-grid-info recommended-grid-info video-info-grid">
+        <div class="resent-grid-info recommended-grid-info video-info-grid" style="background-color:#ffffff">
             <h3><a href="@Url.Action("DetailBaiViet","NguoiViet",new { @idBaiViet = @item.C_idBaiViet })" class="title">@item.TieuDe</a></h3>
             <h5 style="margin-top:10px"><a href="@Url.Action("DetailBaiViet","NguoiViet",new { @idBaiViet = @item.C_idBaiViet })" style="color:black">@item.TomTatNoiDung</a></h5>
             <ul>

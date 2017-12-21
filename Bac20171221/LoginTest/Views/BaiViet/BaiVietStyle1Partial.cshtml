@@ -4,7 +4,7 @@
 @foreach (var item1 in Model.Take(1))
 {
     <div class="recommended-info">
-        <a href="@Url.Action("CongNghe","QuanLyTheLoai",new { @idTheLoai = 1})"><h3>Công nghệ</h3></a>
+        <a href="@Url.Action("CongNghe","QuanLyTheLoai",new { @idTheLoai = 1})"><h3>@item1.TheLoai.TheLoai1</h3></a>
     </div>
 }
 
@@ -24,7 +24,7 @@
             }
         </div>
 
-        <div class="resent-grid-info recommended-grid-info video-info-grid">
+        <div class="resent-grid-info recommended-grid-info video-info-grid" style="background-color:#ffffff">
 
             <h3><a href="@Url.Action("DetailBaiViet","NguoiViet",new { @idBaiViet = @item.C_idBaiViet })" class="title">@item.TieuDe</a></h3>
             <h5 style="margin-top:10px"><a href="@Url.Action("DetailBaiViet","NguoiViet",new { @idBaiViet = @item.C_idBaiViet })" style="color:black">@item.TomTatNoiDung</a></h5>

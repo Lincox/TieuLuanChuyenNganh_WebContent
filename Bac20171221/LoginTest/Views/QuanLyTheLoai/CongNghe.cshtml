@@ -1,9 +1,6 @@
 ﻿@using LoginTest.Models;
 @model IEnumerable<BaiViet>
-@{
-    ViewBag.Title = "Index";
-    Layout = null;
-}
+
 @{
     IEnumerable<BaiViet> lstCN = (IEnumerable<BaiViet>)ViewBag.ListCN;
 }
@@ -73,7 +70,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     </style>
 </head>
 <body>
-        <div class="main-grids">
+        <div class="main-grids" style="padding-top:90px">
             <!--Gán dữ liệu từ controller thông qua Viewbag vào Partialview-->
             <div class="top-grids">
                 @Html.Partial("~/Views/BaiViet/BaiVietStyle3Partial.cshtml", lstCN)

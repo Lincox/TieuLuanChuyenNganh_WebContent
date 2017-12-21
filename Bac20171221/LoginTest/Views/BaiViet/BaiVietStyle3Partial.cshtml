@@ -4,11 +4,10 @@
 @foreach (var item1 in Model.Take(1))
 {
     <div class="recommended-info">
-        <a href="@Url.Action("Index","QuanLyBaiViet",new { @idTheLoai = 1 })"><h3>Công nghệ</h3></a>
+        <h3>@item1.TheLoai.TheLoai1</h3>
     </div>
 }
 
-@*@foreach (var item in Model.Take(3).Where(n => n.C_idTheLoai==1))*@
 @foreach (var item in Model)
 {
 
@@ -27,7 +26,7 @@
             }
         </div>
 
-        <div class="resent-grid-info recommended-grid-info video-info-grid">
+        <div class="resent-grid-info recommended-grid-info video-info-grid" style="background-color:#ffffff">
 
             <h3><a href="@Url.Action("DetailBaiViet","NguoiViet",new { @idBaiViet = @item.C_idBaiViet })" class="title">@item.TieuDe</a></h3>
             <h5 style="margin-top:10px"><a href="@Url.Action("DetailBaiViet","NguoiViet",new { @idBaiViet = @item.C_idBaiViet })" style="color:black">@item.TomTatNoiDung</a></h5>

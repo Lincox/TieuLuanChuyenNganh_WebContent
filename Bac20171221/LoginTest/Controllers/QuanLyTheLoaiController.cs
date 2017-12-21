@@ -20,5 +20,13 @@ namespace LoginTest.Controllers
 
             return View();
         }
+
+        public ActionResult HocTap()
+        {
+            var lstHT = db.BaiViets.Where(n => n.C_idTheLoai == 2).ToList();
+            // Gán vào Viewbag
+            ViewBag.ListHT = lstHT;
+            return View();
+        }
     }
 }

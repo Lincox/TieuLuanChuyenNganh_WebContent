@@ -13,6 +13,8 @@ CKEDITOR.editorConfig = function (config) {
     //Show related videos
     config.youtube_related = true;
 
+    config.height = '500px';
+
     //Customize toolbar by removing button
     config.removeButtons = 'Preview,Source,Save,NewPage,DocProps,Templates,document,Cut,Copy,Paste,PasteText,PasteFromWord,Undo,Redo,Find,Replace,SelectAll,Scayt,Form,Checkbox,Radio,TextField,Textarea,Select,Button,ImageButton,HiddenField,NumberedList,BulletedList,Outdent,Indent,Blockquote,CreateDiv,BidiLtr,BidiRtl,CreatePlaceholder,InsertPre,UIColor,Maximize,ShowBlocks,About,Print,Underline,JustifyCenter';
 
