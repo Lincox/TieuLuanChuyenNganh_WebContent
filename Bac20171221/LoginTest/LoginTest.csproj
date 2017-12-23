@@ -1622,6 +1622,9 @@
     <Content Include="Views\QuanLyTheLoai\CongNghe.cshtml" />
     <Content Include="Views\BaiViet\PartialForHomeWriter.cshtml" />
     <Content Include="Views\QuanLyTheLoai\HocTap.cshtml" />
+    <Content Include="Views\NguoiViet\CommentStyle1Partial.cshtml" />
+    <Content Include="Views\NguoiViet\CommentStyle2Partial.cshtml" />
+    <Content Include="Views\NguoiViet\ThemBinhLuanCap2.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

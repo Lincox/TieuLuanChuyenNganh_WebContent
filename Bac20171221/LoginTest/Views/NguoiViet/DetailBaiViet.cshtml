@@ -106,9 +106,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         </div>
                     </div>
 
-                    <div class="all-comments" style="background-color:#ffffff">
+                    <div class="all-comments">
                         <div class="all-comments-info">
-                            <a href="#">All Comments (8,657)</a>
+                            @*<a href="#">All Comments</a>*@
                             @Html.Partial("~/Views/NguoiViet/ThemBinhLuan.cshtml", new BinhLuan())
                         </div>
                         <div class="all-comments-buttons">
@@ -121,17 +121,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     </div>
 
                     <div class="media-grids">
-
-
                         @*Comment bậc 1*@
-
-                        @Html.Partial("~/Views/BaiViet/CommentStyle1Partial.cshtml", lstComment)
-
-
+                        @Html.Action("CommentStyle1Partial", "NguoiViet", new { @idBaiViet = @item.C_idBaiViet });
                     </div>
-
-                   
-
                 </div>
                 <div class="col-md-4 single-right">
                     <h3>Bài viết liên quan</h3>

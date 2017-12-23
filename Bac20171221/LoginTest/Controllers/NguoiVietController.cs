@@ -75,67 +75,48 @@ namespace LoginTest.Controllers
             var detail1 = db.BaiViets.SingleOrDefault(x => x.C_idBaiViet == idBaiViet);
             Session["DetailBV"] = detail1.C_idBaiViet;
             var Detail = db.BaiViets.Where(x => x.C_idBaiViet == idBaiViet).ToList();
-
-            
-            // User guser = db.Users.SingleOrDefault(n => n.idUser == idUser);
-            var lstComment1 = model.FirstOrDefault(x => x.C_idBaiViet == idBaiViet);
-            //if (lstComment1 != null)
-            //{
-            //    var lstComment = db.BinhLuans.Where(x => x.C_idBaiViet == idBaiViet).ToList();
-            //    ViewBag.ListCM1 = lstComment;
-            //}
-
-            var lstComment = db.BinhLuans.Where(x => x.C_idBaiViet == idBaiViet && x.CapBac == 1 ).ToList();
-            var lstCommentr = db.BinhLuans.Where(x => x.C_idBaiViet == idBaiViet && x.CapBac == 1).ToArray();
-            ViewBag.ListCM1 = lstComment;
-
-           // var lcm= db.BinhLuans.Where(x => x.C_idBaiViet == idBaiViet && x.CapBac == 1);
-           //var tolist1 = lcm.Select(x => x.C_idBinhLuan);
-           // Session["CommentCap1"] = tolist1.ToString();
-
-            // var lstCommenttest = db.BinhLuans.Where(x => x.C_idBaiViet == idBaiViet && x.CapBac == 1 && x.C_idBinhLuanGoc == x.C_idBinhLuan).Select(x => x.C_idBinhLuan).ToList();
-            //var dtlist = db.BinhLuans.FirstOrDefault(x => x.C_idBaiViet == idBaiViet && x.CapBac == 1 && x.C_idBinhLuanGoc == x.C_idBinhLuan);
-            //var dtlist2 = db.BinhLuans.FirstOrDefault(y => y.C_idBaiViet == idBaiViet && y.CapBac == 2);
-            var tolist = from a in lstCommentr
-                         where a.C_idBaiViet == idBaiViet && a.CapBac == 1
-                         select a;
-            
-            foreach (BinhLuan c in tolist)
-            {
-                // c.C_idBinhLuan.ToString();
-                //var error = (List<BinhLuan>)Session["CommentCap1"];
-                Session["CommentCap1"] = c.C_idBinhLuan;
-                //var idBinhLuan1 = Session["CommentCap1"].ToString();
-                //var idBinhLuan12 = c.C_idBinhLuan.ToList();
-                int idBinhLuan1 = c.C_idBinhLuan;
-                var lstComment2 = db.BinhLuans.Where(y => y.C_idBaiViet == idBaiViet && y.CapBac == 2 && idBinhLuan1 == y.C_idBinhLuanGoc).ToList();
-                // var BaiViet = db.BaiViets.Where(x => x.C_idBaiViet == idBV).SingleOrDefault();
-                // var guser = db.BaiViets.ToList();
-                //new { @idBinhLuan = Session["CommentCap1"] };
-                ViewBag.ListCM2 = lstComment2;
-
-            }
-            //var binhluan = new lstComment();
-
-            //var b1 = tolist.SingleOrDefault(x => x.C_idBinhLuan == C_idBinhLuan);
-            //var b2 = db.BinhLuans.Where(x => x.C_idBaiViet == idBaiViet && x.CapBac == 1).ToString();
-            //Session["CommentCap1"] = b1.C_idBinhLuan.ToString();     
-            //var tolist1 = tolist.DefaultIfEmpty().ToString();
-            //var lstComment2 = db.BinhLuans.SingleOrDefault(y => y.C_idBaiViet == idBaiViet && y.CapBac == 2 && tolist1 == y.C_idBinhLuanGoc);
-
-            //ViewBag.ListCM2 = lstComment2;
-
-
             return View(Detail);
         }
-   
+
+        public ActionResult CommentStyle1Partial(int idBaiViet)
+        {
+            var BaiViet = db.BinhLuans.Where(x => x.C_idBaiViet == idBaiViet && x.CapBac == 1).ToList();
+            // var BaiViet1 = db.BinhLuans.Where(x => x.C_idBaiViet == idBaiViet && x.CapBac == 1).SingleOrDefault();
+
+            return PartialView(BaiViet);
+        }
+
+        public ActionResult CommentStyle2Partial(int idBinhLuan)
+        {
+            //var Comment1 = db.BinhLuans.SingleOrDefault(x => x.C_idBinhLuan == idBinhLuan);
+            //Session["DetailCM"] = Comment1.C_idBinhLuan.ToString();
+            //Session["DetailCM"] = idBinhLuan.ToString();
+            var Comment = db.BinhLuans.Where(x => x.CapBac == 2 && x.C_idBinhLuanGoc == idBinhLuan).ToList();
+            //Session["DetailCM1"] = BaiViet.ToString();
+            //for (int i=0; i < BaiViet.Count; i++)
+            //if (BaiViet.Count != 0)
+            //{
+            //    foreach (var rep in BaiViet)
+            //    {
+
+            //        Session["DetailCM"] = idBinhLuan.ToString();
+            //    }
+
+            //}
+            //{
+
+            //}
+            return PartialView(Comment);
+        }
+
+
         [HttpGet]
         public ActionResult ThemBinhLuan()
         {
             return PartialView();
         }
         [HttpPost]
-        public ActionResult ThemBinhLuan(BinhLuan BL, int? idBaiViet)
+        public ActionResult ThemBinhLuan(BinhLuan BL)
         {
             
             db.Entry(BL).State = System.Data.Entity.EntityState.Modified;
@@ -143,11 +124,42 @@ namespace LoginTest.Controllers
             BL.C_idUserDoc = Session["QuyenID"].ToString();
             BL.ThoiDiemBinhLuan = DateTime.Now;
             BL.CapBac = 1;
-            BL.C_idBinhLuanGoc = BL.C_idBinhLuan;
+            BL.C_idBinhLuanGoc = null;
             //Session["CommentCap1"] = BL.C_idBinhLuan.ToString();
             db.BinhLuans.Add(BL);
             db.SaveChanges();
-            return RedirectToAction("DetailBaiViet", "NguoiViet", new { @C_idBaiViet = Session["DetailBV"] });
+            return RedirectToAction("DetailBaiViet", "NguoiViet", new { @idBaiViet = Session["DetailBV"] });
+        }
+
+        [HttpGet]
+        public ActionResult ThemBinhLuanCap2(int idBinhLuan1)
+        {
+            BinhLuan BL1 = new BinhLuan { C_idBinhLuanGoc = idBinhLuan1 };
+
+            return PartialView(BL1);
+        }
+        [HttpPost]
+        public ActionResult ThemBinhLuanCap2(BinhLuan BL1)
+        {
+            // BinhLuan BL1 = new BinhLuan();
+            //BinhLuan BL1;2
+            //Session["DetailCM1"] = idBinhLuan.ToString();
+            // var x1 = db.BinhLuans.Where(x => x.C_idBinhLuan == idBinhLuan).FirstOrDefault();
+            // BinhLuan BL12 = db.BinhLuans.SingleOrDefault(n => n.C_idBinhLuan == idBinhLuan1);
+            //db.Entry(BL1).State = System.Data.Entity.EntityState.Modified;
+            BL1.C_idBaiViet = (int)Session["DetailBV"];
+            BL1.C_idUserDoc = Session["QuyenID"].ToString();
+            BL1.ThoiDiemBinhLuan = DateTime.Now;
+            BL1.CapBac = 2;
+
+
+            //BL1.C_idBinhLuanGoc = idBinhLuan;
+            //BL1.C_idBinhLuan = "11001100";
+            db.BinhLuans.Add(BL1);
+            db.SaveChanges();
+            return RedirectToAction("DetailBaiViet", "NguoiViet", new { @idBaiViet = Session["DetailBV"] });
+
+
         }
 
 
