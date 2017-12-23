@@ -1,34 +1,25 @@
-﻿
-
-
-
-@using LoginTest.Models;
+﻿@using LoginTest.Models;
 @model IEnumerable<BinhLuan>
 @foreach (var item in Model.Take(2))
 {
     <div class="media1">
-        <div class="col-lg-2">
-            <a href="" style="color:#475b6f">
-                <img src="~/Content/images/3.jpg" width="50" height="50" style="margin-bottom:10px;margin-top: 0px " />
+        <div class="col-sm-1">
+            <a style="padding-left:10px" href="@Url.Action("HomeNguoiViet","NguoiViet",new {@idUser = item.User.C_idUser})">
+                <img class="text-center" src="/Content/images/2.jpg" width="40" height="40" style="border-radius:50%; margin-bottom: 10px; margin-top: 10px;" />
             </a>
-
         </div>
-        <div class="col-lg-10" style="color:#475b6f; margin-top:0%">
+        <div class="col-sm-11">
             <div class="panel panel-defaut">
-
                 <div class="row">
-                    <div class="col-xs-12" style="color:#475b6f; margin-top:0%">
-                        <p href="" style="color:#475b6f">
-                            <div class="text">
-                                <h5><b>@item.User.HoTen</b> - @item.ThoiDiemBinhLuan </h5>
-                            </div>
-                        </p>
-                    </div>
-                    <div class="col-xs-12" style="color:#808080">
-                        <h5 style="color:#808080">@item.NoiDung</h5>
+                    <div style="padding-top:1%; padding-left: 3%; padding-right:2%">
+                        <p style="color:black; font-size: 1.5em;"><b style="color:#3658a6">@item.User.HoTen</b> @item.NoiDung</p>
+                        <h6>@item.ThoiDiemBinhLuan</h6>
                     </div>
                 </div>
-
             </div>
         </div>
-    </div>}
+ 
+    </div>
+    
+
+}

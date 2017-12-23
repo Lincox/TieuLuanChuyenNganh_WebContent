@@ -6,74 +6,28 @@
 
 @foreach (var item in Model.Take(4))
 {
-    <div class="media" style="display: inline-block" >
-        <div class="row">
-            <div class="col-lg-2">
-                <a href="" style="color:#475b6f ">
-                    <img src="~/Content/images/1.jpg" width="50" height="50" />
-                </a>
+    <div class="media">
 
-            </div>
-            <div class="col-lg-10" style="color:#475b6f">
-                <div class="panel panel-defaut">
-
-                    <div class="row">
-                        <div class="col-xs-12" style="color:#475b6f">
-                            <p href="" style="color:#475b6f">
-                                <div class="text">
-                                    <h5><b>@item.User.HoTen</b> - @item.ThoiDiemBinhLuan  </h5>
-                                </div>
-                            </p>
-                        </div>
-                        <div class="col-xs-12" style="color:#808080">
-                            <h5 style="color:#808080">@item.NoiDung</h5>
-                        </div>
-                        @*<a class="btn1" style="font-size:14px"> Reply </a>*@
+        <div class="col-sm-1">
+            <a style="padding-left:10px" href="@Url.Action("HomeNguoiViet","NguoiViet",new {@idUser = item.User.C_idUser})">
+                <img class="text-center" src="/Content/images/2.jpg" width="40" height="40" style="border-radius:50%; margin-bottom: 10px; margin-top: 10px;" />
+            </a>
+        </div>
+        <div class="col-sm-11">
+            <div class="panel panel-defaut">
+                <div class="row">
+                    <div style="padding-top:1%; padding-left: 3%; padding-right:2%">
+                        <p style="color:black; font-size: 1.5em;"><b style="color:#3658a6">@item.User.HoTen</b> @item.NoiDung</p>
+                        <h6>@item.ThoiDiemBinhLuan</h6>
                     </div>
                 </div>
             </div>
         </div>
-        @*<script>
-            $(document).ready(function () {
-
-                $(".btn1").onclick(function (evt) {
-            var cell=$(evt.target).closest("div").children().first();
-            var custID = cell.text();
-            document.getElementById("content").style.display = 'none';
-            $("#viewPlaceHolder").load("/NguoiViet/ThemBinhLuanCap2",
-            { customerID: custID, viewName: "btn1" });
-            })
-            });
-            </script>*@
-
-        @*<div class="clearfix"> </div>*@
-
-        @Html.Action("ThemBinhLuanCap2", "NguoiViet", new { idBinhLuan1 = item.C_idBinhLuan })
-        @*<div class="media1" id="content" style ="display:none">
-                <div id="content" class="row" style="margin-top:12px">
-                    <div class="col-xs-12">
-                        <textarea class="form-control" rows="2" id="comment"></textarea>
-                    </div>
-                    <div class="col-xs-12">
-                        <button type="button" class="btn btn-primary" style="float:right; margin-bottom: 4px; margin-top: 4px;margin-right:4px">Đăng</button>
-                    </div>
-
-                </div>
-            </div>
-            <script language="javascript">
-                document.getElementById("btn2").onclick = function () {
-                    document.getElementById("content").style.display = 'none';
-                };
-
-                document.getElementById("btn1").onclick = function () {
-                    document.getElementById("content").style.display = 'block';
-                };
-
-            </script>*@
         @Html.Action("CommentStyle2Partial", "NguoiViet", new { @idBinhLuan = @item.C_idBinhLuan })
+        @Html.Action("ThemBinhLuanCap2", "NguoiViet", new { idBinhLuan1 = item.C_idBinhLuan })
     </div>
 
-        
+
 
 }
 
