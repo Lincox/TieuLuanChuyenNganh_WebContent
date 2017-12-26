@@ -116,6 +116,8 @@ namespace LoginTest.Controllers
                 string middlename = me.middle_name;
                 string lastname = me.last_name;
                 string id = me.id;
+                string picture = string.Format("https://graph.facebook.com/{0}/picture", id);
+
 
                 var user = new User();
                     user.C_idUser = id;
@@ -123,14 +125,16 @@ namespace LoginTest.Controllers
                     user.GioiTinh = true;
                     user.HoTen = firstname + " " + middlename + " " + lastname;
                     user.NgayDangKy = DateTime.Now;
-                    var user1 = db.Users.SingleOrDefault(x => x.C_idUser == user.C_idUser);
+                    user.Hinh = picture;          
+                    user.Quyen = 3;
+                var user1 = db.Users.SingleOrDefault(x => x.C_idUser == user.C_idUser);
                     if (user1 == null)
                     {
                         db.Users.Add(user); 
                         db.SaveChanges();
                         Session["UserName"] = user.Usename.ToString();
-                        return View();
-                     }
+                        return RedirectToAction("Index", "Home");
+                }
                 //return RedirectToAction("AdminNhomNguoiDung2");
                 Session["UserName"] = user1.Usename.ToString();
                 Session["HoTen"] = user1.HoTen.ToString();
