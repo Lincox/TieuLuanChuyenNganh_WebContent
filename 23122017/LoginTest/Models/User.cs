@@ -48,6 +48,8 @@ namespace LoginTest.Models
 
         public int? Quyen { get; set; }
 
+        public string Hinh { get; set; }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<BaiViet> BaiViets { get; set; }
 

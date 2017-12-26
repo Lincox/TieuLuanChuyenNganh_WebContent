@@ -1,5 +1,7 @@
 ﻿@model LoginTest.Models.User
-
+@{
+    Layout = null;
+}
 @{
     ViewBag.Title = "CapNhatNguoiDung";
 }
@@ -53,7 +55,7 @@
                     <!-- Top Menu Items -->
                     <ul class="nav navbar-right top-nav">
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> Thang Nguyen <b class="caret"></b></a>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> @Session["UserNameAD"].ToString() <b class="caret"></b></a>
                             <ul class="dropdown-menu">
                                 <li>
                                     <a href="#"><i class="fa fa-fw fa-user"></i> Profile</a>
@@ -79,7 +81,7 @@
                                         <img src="image/avatar.png" class="img-circle" alt="User Image" height="50px">
                                     </div>
                                     <div class="pull-left info">
-                                        <p style="color:antiquewhite">Thang Nguyen</p>
+                                        <p style="color:antiquewhite">@Session["UserNameAD"].ToString()</p>
                                         <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
                                     </div>
                                 </div>
@@ -184,7 +186,7 @@
                                             <h4>User</h4>
                                             <hr />
                                             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                                            @Html.HiddenFor(model => model.idUser)
+                                            @Html.HiddenFor(model => model.C_idUser)
 
                                             <div class="form-group">
                                                 @Html.LabelFor(model => model.HoTen, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -261,7 +263,7 @@
                                             <div class="form-group">
                                                 <div class="col-md-offset-2 col-md-10">
                                                     <input type="submit" value="Update" class="btn btn-success" />
-                                               
+
                                                     <a class="btn btn-default" href="@Url.Action("XemTrangChu","LoginAD")">
                                                         <i class="fa fa-trash-o"></i> Back
                                                     </a>

@@ -3,6 +3,9 @@
     ViewBag.Title = "AdminNhomNguoiDung3";
     //Layout = "~/Views/Shared/Layout1.cshtml";
 }
+@{
+    Layout = null;
+}
 @using LoginTest.Models;
 @model List<User>
 <!DOCTYPE html>
@@ -54,7 +57,7 @@
                     <!-- Top Menu Items -->
                     <ul class="nav navbar-right top-nav">
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> Thang Nguyen <b class="caret"></b></a>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> @Session["UserNameAD"].ToString() <b class="caret"></b></a>
                             <ul class="dropdown-menu">
                                 <li>
                                     <a href="#"><i class="fa fa-fw fa-user"></i> Profile</a>
@@ -80,7 +83,7 @@
                                         <img src="image/avatar.png" class="img-circle" alt="User Image" height="50px">
                                     </div>
                                     <div class="pull-left info">
-                                        <p style="color:antiquewhite">Thang Nguyen</p>
+                                        <p style="color:antiquewhite">@Session["UserNameAD"].ToString()</p>
                                         <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
                                     </div>
                                 </div>
@@ -195,19 +198,19 @@
                                                 @foreach (var item in Model)
                                                 {
                                                     <tr>
-                                                        <td>@item.idUser</td>
+                                                        <td>@item.C_idUser</td>
                                                         <td>@item.HoTen</td>
                                                         <td class="hidden-480">@item.NgayDangKy</td>
                                                         <td>@item.SDT</td>
                                                         <td>@item.Usename</td>
                                                         <td class="center">
-                                                            <a class="btn btn-success" href="@Url.Action("CapNhatNguoiDung3","NhomNguoiDung", new {@idUser =@item.idUser})">
+                                                            <a class="btn btn-success" href="@Url.Action("CapNhatNguoiDung3","NhomNguoiDung", new {@idUser =@item.C_idUser})">
                                                                 <i class="fa fa-pencil-square-o"></i> Detail
                                                             </a>
                                                         </td>
                                                         @*<td><a href="#">@(item.QuyenVietBai ? "Kích hoạt" : "Khóa")</a></td>*@
                                                         <td class="center">
-                                                            <a class="btn btn-danger" onclick="return ConfirmXoa()" href="@Url.Action("XemTrangChu","LoginAD", new {@idUser =@item.idUser})">
+                                                            <a class="btn btn-danger" onclick="return ConfirmXoa()" href="@Url.Action("XemTrangChu","LoginAD", new {@idUser =@item.C_idUser})">
                                                                 <i class="fa fa-trash-o"></i> Delete
                                                             </a>
                                                         </td>
