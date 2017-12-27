@@ -22,7 +22,7 @@ namespace LoginTest.Controllers
         public ActionResult AdminNhomNguoiDung2()
         {
             //var user = db.Users.Where(x => x.Id == id).SingleOrDefault();
-            var guser = db.Users.Where(x => x.Quyen == 2).ToList();// load theo quyen.
+            var guser = db.Users.Where(x => x.Quyen == 4).ToList();// load theo quyen.
             //var guser = db.Users.ToList();
             return View(guser);
         }
